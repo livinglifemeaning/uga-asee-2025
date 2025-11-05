@@ -18,12 +18,9 @@ All team members will use this GitHub repository to:
    git clone https://github.com/<org-or-user>/ASEE-Robotics-2025.git
    ```
 2. **Install dependencies**  
-   *(Add specific instructions here, e.g., Python packages, ROS setup, etc.)*
+   *(TBD)*
 3. **Run the code**
-   ```bash
-   python main.py
-   ```
-   *(Adjust depending on your project’s entry point)*
+   *(TBD)*
 
 ## Contributing
 - Create a new branch for each feature or fix.
