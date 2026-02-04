@@ -1,0 +1,26 @@
+import odrive
+from odrive.enums import *
+import time
+
+print("Finding ODrive...")
+odrv0 = odrive.find_any()
+
+print("Putting axis0 in IDLE")
+odrv0.axis0.requested_state = AXIS_STATE_IDLE
+time.sleep(1)
+
+print("Entering CLOSED LOOP")
+odrv0.axis0.requested_state = AXIS_STATE_CLOSED_LOOP_CONTROL
+time.sleep(1)
+
+print("Setting torque control")
+odrv0.axis0.controller.config.control_mode = CONTROL_MODE_TORQUE_CONTROL
+
+print("Applying torque")
+odrv0.axis0.controller.input_torque = 0.3
+
+time.sleep(3)
+
+print("Stopping motor")
+odrv0.axis0.controller.input_torque = 0
+odrv0.axis0.requested_state = AXIS_STATE_IDLE
