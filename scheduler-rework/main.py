@@ -28,12 +28,17 @@ while startup.state != StartupSystem.RUNNING:
     startup.update()
     time.sleep(0.05)
 
+intake.on_timed(4.0)
+
+time.sleep(1)
+
 drivetrain.go_forward(0.5, 3.0)
+drivetrain.go_forward(0.5, 3.0, intake=True) 
 drivetrain.turn_right(0.5, 2.0)
-drivetrain.turn_left(0.5, 2.0)
+drivetrain.turn_left(0.5, 8.0, sorter=True)
 drivetrain.go_backward(0.5, 3.0)
 
-
+time.sleep(1)
 
 outtake.on_double(2.0)
 outtake.on_single(2.0)
