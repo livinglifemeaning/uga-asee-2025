@@ -7,7 +7,7 @@ class Motor:
 
         self._channel_id = channel_id
         self._command_velocity = 0.0
-        self._command_state = Motor.IDLE
+        self.state = Motor.IDLE
 
         self.i2c = i2c
         self.pca = pca
@@ -33,9 +33,9 @@ class Motor:
 
     def update(self):
         if self._command_velocity == 0.0:
-            self._command_state = Motor.IDLE
+            self.state = Motor.IDLE
         else:
-            self._command_state = Motor.RUNNING
+            self.state = Motor.RUNNING
 
         pulse_us = self.NEUTRAL_US + (self._command_velocity * self.RANGE)  # Scale velocity to pulse width
         self.set_pulse_us(pulse_us)
