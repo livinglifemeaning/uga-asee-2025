@@ -6,15 +6,16 @@ from adafruit_pca9685 import PCA9685
 from subsystems.drivetrain import Drivetrain
 from subsystems.startup import StartupSystem
 from subsystems.outtake import OuttakeSystem
-from utils.motor import Motor
-
+from subsystems.intake import IntakeSystem
 
 i2c = busio.I2C(board.SCL, board.SDA)
 pca = PCA9685(i2c)
 pca.frequency = 50
 
-drivetrain = Drivetrain(i2c, pca)
-outtake = OuttakeSystem(i2c, pca)
+intake = IntakeSystem(channel_id=4, i2c=i2c, pca=pca)
+
+drivetrain = Drivetrain(i2c=i2c, pca=pca, intake=intake)
+outtake = OuttakeSystem(i2c=i2c, pca=pca)
 startup = StartupSystem()
 
 while startup.state != StartupSystem.RUNNING:

@@ -7,7 +7,7 @@ class StartupSystem:
     WAITING = 0 # IDLE -> WAITING when gpio input detected
     RUNNING = 1 # when light is detected
 
-    def __init__(self, pin=-1):
+    def __init__(self, pin):
         self.pin = pin
         self.state = StartupSystem.WAITING # starts as WAITING
 
