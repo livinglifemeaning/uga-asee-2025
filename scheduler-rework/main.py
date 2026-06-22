@@ -21,8 +21,8 @@ intake = IntakeSystem(channel_id=4, i2c=i2c, pca=pca)
 sorter = SorterSystem(i2c=i2c, pca=pca, bus=bus, channel_ids=[5, 6, 7])
 
 drivetrain = Drivetrain(i2c=i2c, pca=pca, intake=intake, sorter=sorter, channel_ids=[0, 1, 2, 3])
-outtake = OuttakeSystem(pin=1, channel_id=8, i2c=i2c, pca=pca)
-startup = StartupSystem()
+outtake = OuttakeSystem(pin=16, channel_id=8, i2c=i2c, pca=pca)
+startup = StartupSystem(pin=12)
 
 while startup.state != StartupSystem.RUNNING:
     startup.update()
